@@ -5,7 +5,7 @@ Jag vill bygga en applikation kallad Parkour Journey. Applikationen bygger på a
 ## 2. Vyer (visa bildskisser på dina sidor).
 Är inte hemma och de skisserna är hemma så lägger in dem så fort som möjligt.
 ## 3. Databas med ER-diagram (Bild på ER-diagram).
-    ![begin](er_diagram.jpg)
+![begin](er_diagram.jpg)
 ## 4. Arkitektur (Beskriv filer och mappar - vad gör/innehåller de?).
 
 
