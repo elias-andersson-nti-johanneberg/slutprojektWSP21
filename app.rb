@@ -8,6 +8,10 @@ require_relative 'model.rb'
 enable :sessions
 
 get('/') do
+  slim(:home)
+end
+
+get('/user') do
     moves_list = get_moves()
     slim(:user, locals:{user_moves_list:moves_list})
   end
@@ -34,7 +38,7 @@ get('/') do
     if params[:image] && params[:image][:filename]
       filename = params[:image][:filename]
       file = params[:image][:tempfile]
-     img_path = "./public/uploads/#{filename}"
+     img_path = "./uploads/#{filename}"
   
       # Write file to disk
       File.open(img_path, 'wb') do |f|

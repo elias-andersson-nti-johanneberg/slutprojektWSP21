@@ -26,7 +26,9 @@ end
 def new_move(move_name, move_content, difficulty, genre, img_path)
     created_by = 0
     db = SQLite3::Database.new('db\parkour_journey_21_db.db')
-    db.execute("INSERT INTO moves (move_name, content, difficulty, genre_id, created_user_id, img_path) VALUES (?,?,?,?,?,?)",move_name, move_content, difficulty, genre, created_by, img_path)
+    db.execute("INSERT INTO moves (move_name, content, difficulty, created_user_id, img_path) VALUES (?,?,?,?,?)",move_name, move_content, difficulty, created_by, img_path)
+    move_id = db.execute("SELECT id FROM moves WHERE move_name = ?", move_name) 
+    db.execute("Insert INTO genre_move_relationship (genre_id, move_id) VALUES (?,?)", genre, move_id)
     return true
 end 
 
