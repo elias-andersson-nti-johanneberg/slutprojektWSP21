@@ -11,9 +11,26 @@ get('/') do
   slim(:home)
 end
 
+get('/register') do
+  slim(:"user/register")
+end
+
+post('/register/new') do 
+  register_new_user()
+end
+
+get('/showlogin') do
+  slim(:"user/login")
+end
+
+post('/login') do
+  login()
+end
+
 get('/user') do
     moves_list = get_moves()
-    slim(:user, locals:{user_moves_list:moves_list})
+    lvl = get_lvl()
+    slim(:"user/index", locals:{user_moves_list:moves_list, user_lvl:lvl})
   end
 
   post('/uploads') do 
@@ -52,9 +69,13 @@ get('/user') do
   end
 
   get('/created_move') do
-    slim(:created_a_move)
+    slim(:"moves/created_a_move")
     
     if true == wait(5)
       redirect('/')
     end
+  end
+
+  get('/error') do 
+    session[:error]
   end
