@@ -1,6 +1,12 @@
-h1 {font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;}
+h1 {font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+color: rgb(139, 39, 39);
+}
 
 img {
     height: auto;
     width:100px;
+}
+
+.navy {
+    background-color: aqua;
 }

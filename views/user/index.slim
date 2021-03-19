@@ -8,6 +8,9 @@ h2 Moves
     h4 = move ["move_name"]
     p = move ["content"]
     img src= move["img_path"] alt="" width="100px" / 
+    form action="move/learn" method="post"enctype="multipart/form-data"
+    input type="submit" move_n="move_name" value="Learn"
+     
 
 - if session[:username] == "admin"
     Section 

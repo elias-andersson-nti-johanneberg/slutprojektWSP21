@@ -95,6 +95,14 @@ def get_lvl()
     return result[0]["lvlname"]
 end
 
+def learn_move(move_name)
+    username = session[:username]
+    db = SQLite3::Database.new('db\parkour_journey_21_db.db')
+    move_id = db.execute("SELECT id FROM moves WHERE move_name = ?", move_name) 
+    db.execute("Insert INTO learning (user_id, move_id) VALUES (?,?)", username, move_id)
+    return true
+end
+
 def get_moves()
     db = SQLite3::Database.new('db\parkour_journey_21_db.db')
     p db

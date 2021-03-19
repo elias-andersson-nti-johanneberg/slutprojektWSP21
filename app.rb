@@ -46,6 +46,12 @@ get('/user') do
     end
   end
 
+  post('/move/learn') do 
+    move_name = params[:move_n]
+    learn_move(move_name)
+    redirect('/user')
+  end 
+
   post('/move/new') do 
     move_name = params[:move_name]
     move_content = params[:move_content]
@@ -67,6 +73,7 @@ get('/user') do
 
     redirect('/created_move')
   end
+
 
   get('/created_move') do
     slim(:"moves/created_a_move")
