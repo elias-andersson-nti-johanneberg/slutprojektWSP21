@@ -47,8 +47,8 @@ get('/user') do
   end
 
   post('/move/learn') do 
-    move_name = params[:move_n]
-    learn_move(move_name)
+    p params[:training]
+    
     redirect('/user')
   end 
 

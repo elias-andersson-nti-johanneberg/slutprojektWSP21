@@ -1,3 +1,5 @@
+
+
 h2 Welcome #{session[:username]}!
 
 h3 Your lvl is #{user_lvl}
@@ -5,11 +7,16 @@ h3 Your lvl is #{user_lvl}
 h2 Moves
 
 - user_moves_list.each do |move|
+    - move_n = move ["move_name"]
     h4 = move ["move_name"]
     p = move ["content"]
     img src= move["img_path"] alt="" width="100px" / 
     form action="move/learn" method="post"enctype="multipart/form-data"
-    input type="submit" move_n="move_name" value="Learn"
+        input type="checkbox" id="learning" name="training" value="learning"/
+        label for="learning" I want to learn this
+        input type="checkbox" id="learned" name="training" value="Learned"/
+        label for="learned" I can do this
+        input type="submit" value="submit"
      
 
 - if session[:username] == "admin"
