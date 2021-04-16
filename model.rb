@@ -86,24 +86,69 @@ end
 
 def get_lvl()
     db = SQLite3::Database.new('db\parkour_journey_21_db.db')
-    p db
     db.results_as_hash = true
     lvl_id_hash= db.execute("SELECT DISTINCT lvl_id FROM users_lvl_relationship Where user_id = ?", session[:id]) 
     lvl_id = lvl_id_hash[0]["lvl_id"]
     result = db.execute("SELECT DISTINCT lvlname FROM lvl Where id = ?", lvl_id) 
-    p result
     return result[0]["lvlname"]
 end
 
 def learn_move(move_name)
     username = session[:username]
     db = SQLite3::Database.new('db\parkour_journey_21_db.db')
-    move_id = db.execute("SELECT id FROM moves WHERE move_name = ?", move_name) 
-    db.execute("Insert INTO learning (user_id, move_id) VALUES (?,?)", username, move_id)
+    db.results_as_hash = true
+    move_id_hash = db.execute("SELECT id FROM moves WHERE move_name = ?", move_name) 
+    move_id = move_id_hash[0]["id"]
+    user_id_hash = db.execute("SELECT id FROM users WHERE username = ?", username) 
+    user_id = user_id_hash[0]["id"]
+    db.execute("Insert INTO learning (user_id, move_id) VALUES (?,?)", user_id, move_id)
+    return true
+end
+
+def learned_move(move_name)
+    username = session[:username]
+    db = SQLite3::Database.new('db\parkour_journey_21_db.db')
+    db.results_as_hash = true
+    move_id_hash = db.execute("SELECT id FROM moves WHERE move_name = ?", move_name) 
+    move_id = move_id_hash[0]["id"]
+    user_id_hash = db.execute("SELECT id FROM users WHERE username = ?", username) 
+    user_id = user_id_hash[0]["id"]
+    db.execute("Insert INTO learned (user_id, move_id) VALUES (?,?)", user_id, move_id)
+    db.execute("DELETE FROM learning WHERE move_id = ?", move_id)
     return true
 end
 
 def get_moves()
+    db = SQLite3::Database.new('db\parkour_journey_21_db.db')
+    db.results_as_hash = true
+    result = db.execute("SELECT * FROM moves Where difficulty = 2") 
+    return result
+end
+
+def select_moves_with_id(array_of_moves_id)
+    db = SQLite3::Database.new('db\parkour_journey_21_db.db')
+    array_of_moves_name = []
+    array_of_moves_id.each do |id|
+        id = id["move_id"]
+        move_name = db.execute("SELECT ")
+
+end
+
+def get_learning_moves()
+    username = session[:username]
+    db = SQLite3::Database.new('db\parkour_journey_21_db.db')
+    p db
+    db.results_as_hash = true
+    user_id_hash = db.execute("SELECT id FROM users WHERE username = ?", username) 
+    user_id = user_id_hash[0]["id"]
+    result = db.execute("SELECT * FROM learning Where user_id = ?", user_id) 
+    p result
+    p "1"
+    return result
+end
+
+def get_learned_moves()
+    username = session[:username]
     db = SQLite3::Database.new('db\parkour_journey_21_db.db')
     p db
     db.results_as_hash = true

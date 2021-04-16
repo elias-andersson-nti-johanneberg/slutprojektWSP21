@@ -29,8 +29,10 @@ end
 
 get('/user') do
     moves_list = get_moves()
+    learning_list = get_learning_moves()
+    learned_list = get_learned_moves()
     lvl = get_lvl()
-    slim(:"user/index", locals:{user_moves_list:moves_list, user_lvl:lvl})
+    slim(:"user/index", locals:{user_moves_list:moves_list,user_learning_list:learning_list, user_learned_list:learned_list, user_lvl:lvl})
   end
 
   post('/uploads') do 
@@ -47,8 +49,16 @@ get('/user') do
   end
 
   post('/move/learn') do 
-    p params[:training]
-    
+    learn_decision = params[:training]
+     decision = learn_decision.split(".")
+     p decision
+     p decision[0]
+     p decision[1]
+     if decision[0] == "learning"
+      learn_move(decision[1])
+     else
+      learned_move(decision[1])
+     end
     redirect('/user')
   end 
 
