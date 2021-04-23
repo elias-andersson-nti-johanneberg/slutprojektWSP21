@@ -3,7 +3,6 @@ require 'slim'
 require 'byebug'
 require 'bcrypt'
 require 'sqlite3'
-
 enable :sessions
 
 
@@ -17,6 +16,14 @@ end
 def set_error(string)
     session[:error] = string
     return session[:error]
+end
+
+def selection_from_hash_array(double_array_with_hash, selection)
+    new_array = []
+    double_array_with_hash.each do |array|
+        new_array << array[selection]
+    end
+    return new_array
 end
 
 def register_new_user()
@@ -93,6 +100,24 @@ def get_lvl()
     return result[0]["lvlname"]
 end
 
+
+def get_lvl_id(lvl_name)
+    db = SQLite3::Database.new('db\parkour_journey_21_db.db')
+    db.results_as_hash = true
+    result = db.execute("SELECT DISTINCT id FROM lvl Where lvlname = ?", lvl_name) 
+    lvl_id = result[0]["id"]
+    return lvl_id
+end
+
+def get_user_id(username)
+    db = SQLite3::Database.new('db\parkour_journey_21_db.db')
+    db.results_as_hash = true
+    result = db.execute("SELECT DISTINCT id FROM users Where username = ?", username) 
+    user_id = result[0]["id"]
+    p user_id
+    return user_id
+end
+
 def learn_move(move_name)
     username = session[:username]
     db = SQLite3::Database.new('db\parkour_journey_21_db.db')
@@ -127,34 +152,39 @@ end
 
 def select_moves_with_id(array_of_moves_id)
     db = SQLite3::Database.new('db\parkour_journey_21_db.db')
+    db.results_as_hash = true
     array_of_moves_name = []
     array_of_moves_id.each do |id|
-        id = id["move_id"]
-        move_name = db.execute("SELECT ")
-
+        move_name = db.execute("SELECT * FROM moves WHERE id = ?", id)
+        array_of_moves_name << move_name[0]
+    end
+    return array_of_moves_name
 end
 
 def get_learning_moves()
     username = session[:username]
     db = SQLite3::Database.new('db\parkour_journey_21_db.db')
-    p db
     db.results_as_hash = true
     user_id_hash = db.execute("SELECT id FROM users WHERE username = ?", username) 
     user_id = user_id_hash[0]["id"]
-    result = db.execute("SELECT * FROM learning Where user_id = ?", user_id) 
-    p result
-    p "1"
-    return result
+    result = db.execute("SELECT move_id FROM learning Where user_id = ?", user_id) 
+    move_names = selection_from_hash_array(result, "move_id")
+   learning_moves_list = select_moves_with_id(move_names)
+   p learning_moves_list
+    return learning_moves_list
 end
 
 def get_learned_moves()
     username = session[:username]
     db = SQLite3::Database.new('db\parkour_journey_21_db.db')
-    p db
     db.results_as_hash = true
-    result = db.execute("SELECT * FROM moves Where difficulty = 2") 
-    p result
-    return result
+    user_id_hash = db.execute("SELECT id FROM users WHERE username = ?", username) 
+    user_id = user_id_hash[0]["id"]
+    result = db.execute("SELECT move_id FROM learned Where user_id = ?", user_id) 
+    move_names = selection_from_hash_array(result, "move_id")
+   learned_moves_list = select_moves_with_id(move_names)
+   p learned_moves_list
+    return learned_moves_list
 end
 
 def new_move(move_name, move_content, difficulty, genre, img_path)
@@ -165,6 +195,27 @@ def new_move(move_name, move_content, difficulty, genre, img_path)
     db.execute("Insert INTO genre_move_relationship (genre_id, move_id) VALUES (?,?)", genre, move_id)
     return true
 end 
+
+def check_lvl(username, user_learned_list)
+    user_lvl = get_lvl()
+    if user_learned_list.count == 4 && user_lvl == "noob"
+        change_lvl("beginner",username)
+    elsif user_learned_list.count == 15 && user_lvl == "beginner"
+        change_lvl("intermediete",username)
+    elsif user_learned_list.count == 20 && user_lvl == "intermediate"
+        change_lvl("athlete",username)
+    elsif user_learned_list.count == 25 && user_lvl == "athlete"
+        change_lvl("legend",username)
+    end
+end
+
+def change_lvl(new_lvl, username)
+    db = SQLite3::Database.new('db\parkour_journey_21_db.db')
+    lvl_id = get_lvl_id(new_lvl)
+    user_id = get_user_id(username)
+    db.execute("DELETE from users_lvl_relationship Where user_id = ?", user_id)
+    return db.execute("insert into users_lvl_relationship (user_id, lvl_id, progress) VALUES (?, ?, 0)", user_id, lvl_id)
+end
 
 def select_difficulty(difficulty)
     db = SQLite3::Database.new('db\parkour_journey_21_db.db')

@@ -3,7 +3,7 @@ h2 Welcome #{session[:username]}!
 
 h3 Your lvl is #{user_lvl}
 
-h2 learn
+h2 learning right now
 
 - user_learning_list.each do |move|
     - move_n = move ["move_name"]
@@ -11,8 +11,18 @@ h2 learn
     p = move ["content"]
     img src= move["img_path"] alt="" width="100px" / 
     form action="move/learn" method="post" enctype="multipart/form-data"
-        input type="checkbox" id="learning" name="training" value="learning.#{move ["move_name"]}"/
-        label for="learning" I want to learn this
+        input type="checkbox" id="learned" name="training" value="learned.#{move ["move_name"]}"/
+        label for="learned" I can do this
+        input type="submit" value="submit"
+
+h2 Moves in my arsenal
+
+- user_learned_list.each do |move|
+    - move_n = move ["move_name"]
+    h4 = move ["move_name"]
+    p = move ["content"]
+    img src= move["img_path"] alt="" width="100px" / 
+    form action="move/learn" method="post" enctype="multipart/form-data"
         input type="checkbox" id="learned" name="training" value="learned.#{move ["move_name"]}"/
         label for="learned" I can do this
         input type="submit" value="submit"
