@@ -127,7 +127,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Displays the home page and title of the site.</p>
+</div></span>
   
 </li>
 
@@ -149,7 +151,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Displays a page where you get feedback that you created a move and the sends you back to &#39;/user&#39;.</p>
+</div></span>
   
 </li>
 
@@ -171,7 +175,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Displays a error page with error message to indicate what went wrong.</p>
+</div></span>
   
 </li>
 
@@ -193,7 +199,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Displays the sign up form.</p>
+</div></span>
   
 </li>
 
@@ -215,7 +223,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Displays the sign in form.</p>
+</div></span>
   
 </li>
 
@@ -237,7 +247,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Displays the user page where you can find all of your account data.</p>
+</div></span>
   
 </li>
 
@@ -259,7 +271,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Attempts login and updates the session.</p>
+</div></span>
   
 </li>
 
@@ -282,7 +296,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>post(&#39;/uploads&#39;) do      if <a href=":image">params</a> &amp;&amp; <a href=":image">params</a>[:filename]       filename = <a href=":image">params</a>[:filename]       file = <a href=":image">params</a>[:tempfile]       path = “./public/uploads/#filename”          # Write file to disk       File.open(path, &#39;wb&#39;) do |f|         f.write(file.read)       end     end   end.</p>
+<p>Attempts to update what moves you have learned or want to learn and the redirects to &#39;/user&#39;.</p>
 </div></span>
   
 </li>
@@ -305,7 +319,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Attempts to create a new move and put it in the database and then redirects to &#39;/created_move&#39;.</p>
+</div></span>
   
 </li>
 
@@ -327,7 +343,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Attempts login and updates the session.</p>
+</div></span>
   
 </li>
 
@@ -361,18 +379,31 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Displays the home page and title of the site</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-12
-13
-14</pre>
+14
+15
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 14</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:home</span><span class='rparen'>)</span>
@@ -391,28 +422,41 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Displays a page where you get feedback that you created a move and the sends you back to &#39;/user&#39;</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-91
-92
-93
-94
-95
-96
-97</pre>
+129
+130
+131
+132
+133
+134
+135</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 91</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 129</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/created_move</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:&quot;moves/created_a_move&quot;</span><span class='rparen'>)</span>
   
   <span class='kw'>if</span> <span class='kw'>true</span> <span class='op'>==</span> <span class='id identifier rubyid_wait'><span class='object_link'><a href="Model.html#wait-instance_method" title="Model#wait (method)">wait</a></span></span><span class='lparen'>(</span><span class='int'>5</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/user</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -429,18 +473,31 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Displays a error page with error message to indicate what went wrong</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-99
-100
-101</pre>
+139
+140
+141</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 99</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 139</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/error</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> 
   <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:error</span><span class='rbracket'>]</span>
@@ -459,18 +516,31 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Displays the sign up form</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-16
-17
-18</pre>
+20
+21
+22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 20</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/register</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:&quot;user/register&quot;</span><span class='rparen'>)</span>
@@ -489,18 +559,31 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Displays the sign in form</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-24
-25
-26</pre>
+33
+34
+35</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 33</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/showlogin</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:&quot;user/login&quot;</span><span class='rparen'>)</span>
@@ -519,23 +602,51 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Displays the user page where you can find all of your account data. what lvl you are, what kind of moves you have learnt and can learn.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Model.html#get_moves-instance_method" title="Model#get_moves (method)">Model#get_moves</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#get_learning_moves-instance_method" title="Model#get_learning_moves (method)">Model#get_learning_moves</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#get_learned_moves-instance_method" title="Model#get_learned_moves (method)">Model#get_learned_moves</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#check_lvl-instance_method" title="Model#check_lvl (method)">Model#check_lvl</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#get_lvl-instance_method" title="Model#get_lvl (method)">Model#get_lvl</a></span></li>
+    
+  </ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-32
-33
-34
-35
-36
-37
-38
-39</pre>
+51
+52
+53
+54
+55
+56
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 51</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/user</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_moves_list'>moves_list</span> <span class='op'>=</span> <span class='id identifier rubyid_get_moves'><span class='object_link'><a href="Model.html#get_moves-instance_method" title="Model#get_moves (method)">get_moves</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
@@ -559,18 +670,38 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Attempts login and updates the session</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Model.html#login-instance_method" title="Model#login (method)">Model#login</a></span></li>
+    
+  </ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-28
-29
-30</pre>
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 40</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/login</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_login'><span class='object_link'><a href="Model.html#login-instance_method" title="Model#login (method)">login</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
@@ -592,26 +723,42 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>post(&#39;/uploads&#39;) do </p>
-
-<pre class="code ruby"><code class="ruby">  if params[:image] &amp;&amp; params[:image][:filename]
-    filename = params[:image][:filename]
-    file = params[:image][:tempfile]
-    path = &quot;./public/uploads/#{filename}&quot;
-
-    # Write file to disk
-    File.open(path, &#39;wb&#39;) do |f|
-      f.write(file.read)
-    end
-  end
-end
-</code></pre>
+<p>Attempts to update what moves you have learned or want to learn and the redirects to &#39;/user&#39;</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>training,</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Information if the user has learnt or wants to learn a specific move</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Model.html#learn_move-instance_method" title="Model#learn_move (method)">Model#learn_move</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#learned_move-instance_method" title="Model#learned_move (method)">Model#learned_move</a></span></li>
+    
+  </ul>
 
 
 
@@ -621,28 +768,30 @@ end
       <pre class="lines">
 
 
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66</pre>
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 82</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/move/learn</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> 
   <span class='id identifier rubyid_learn_decision'>learn_decision</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:training</span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_decision'>decision</span> <span class='op'>=</span> <span class='id identifier rubyid_learn_decision'>learn_decision</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-    <span class='kw'>if</span> <span class='id identifier rubyid_decision'>decision</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>learning</span><span class='tstring_end'>&quot;</span></span>
+  <span class='comment'>#takes the value from the form splits it up and exceutes two diffrent functions depending on the value sent.
+</span>  <span class='id identifier rubyid_decision'>decision</span> <span class='op'>=</span> <span class='id identifier rubyid_learn_decision'>learn_decision</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_decision'>decision</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>learning</span><span class='tstring_end'>&quot;</span></span>
     <span class='id identifier rubyid_learn_move'><span class='object_link'><a href="Model.html#learn_move-instance_method" title="Model#learn_move (method)">learn_move</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_decision'>decision</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-    <span class='kw'>else</span>
+  <span class='kw'>else</span>
     <span class='id identifier rubyid_learned_move'><span class='object_link'><a href="Model.html#learned_move-instance_method" title="Model#learned_move (method)">learned_move</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_decision'>decision</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-    <span class='kw'>end</span>
+  <span class='kw'>end</span>
   <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/user</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -659,36 +808,172 @@ end
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Attempts to create a new move and put it in the database and then redirects to &#39;/created_move&#39;</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>move_name,</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The name of the move that is being created</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>move_content,</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The description of the new move</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>difficulty,</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The number signifing how hard the move is and which lvl is able to learn it.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>genre,</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The number singifing what class the move belongs to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>image,</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The image of the move</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>filename,</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The name of the image file</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>tempfile,</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The data of the image file</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Model.html#new_move-instance_method" title="Model#new_move (method)">Model#new_move</a></span></li>
+    
+  </ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88</pre>
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 105</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/move/new</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> 
   <span class='id identifier rubyid_move_name'>move_name</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:move_name</span><span class='rbracket'>]</span>
@@ -706,7 +991,7 @@ end
       <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
-  <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_img_path'>img_path</span>
+  
   <span class='id identifier rubyid_new_move'><span class='object_link'><a href="Model.html#new_move-instance_method" title="Model#new_move (method)">new_move</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_move_name'>move_name</span><span class='comma'>,</span> <span class='id identifier rubyid_move_content'>move_content</span><span class='comma'>,</span> <span class='id identifier rubyid_difficulty'>difficulty</span><span class='comma'>,</span> <span class='id identifier rubyid_genre'>genre</span><span class='comma'>,</span> <span class='id identifier rubyid_img_path'>img_path</span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/created_move</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -725,18 +1010,38 @@ end
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Attempts login and updates the session</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Model.html#login-instance_method" title="Model#login (method)">Model#login</a></span></li>
+    
+  </ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-20
-21
-22</pre>
+27
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 27</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/register/new</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> 
   <span class='id identifier rubyid_register_new_user'><span class='object_link'><a href="Model.html#register_new_user-instance_method" title="Model#register_new_user (method)">register_new_user</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
@@ -751,7 +1056,7 @@ end
 </div>
 
       <div id="footer">
-  Generated on Sun Apr 25 21:15:10 2021 by
+  Generated on Mon Apr 26 00:12:10 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 (ruby-2.7.2).
 </div>

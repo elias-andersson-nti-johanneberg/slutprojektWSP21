@@ -5,19 +5,29 @@ require 'bcrypt'
 require 'sqlite3'
 enable :sessions
 
-module Model
 #Funktions program: har alla funktioner samt sköter all kommuniktaion med databasen.
 
+module Model
+
+# Attemts to make the computer wait before doing the next command
+#
+# @return [Boolean] True, if the function worked
     def wait(seconds)
         sleep(seconds)
         return true
     end
 
+# Attemts to change the sessions error message
+#
+# @return [string] the error message
     def set_error(string)
         session[:error] = string
         return session[:error]
     end
 
+# Attemts to take a double array with hashes with it and take out a single element and put them in an array
+#
+# @return [array] an array with only the selected data
     def selection_from_hash_array(double_array_with_hash, selection)
         new_array = []
         double_array_with_hash.each do |array|
@@ -26,6 +36,18 @@ module Model
         return new_array
     end
 
+    # Attempts to create a new user
+    #
+    # @param [Hash] params form data
+    # @option params [String] username, The username
+    # @option params [String] password, The password
+    # @option params [String] password_confirm, The repeated password
+    #
+    # @see Model#create_lvl_relationship
+    #
+    # @return [redirect]
+    #   * :'/error' whether an error occured
+    #   * :'/' the home page if the user was created 
     def register_new_user()
         username = params[:username]
         password = params[:password]
@@ -60,6 +82,18 @@ module Model
         end
     end
 
+    # Attempts to login and update session
+    #
+    # @param [Hash] params form data
+    # @option params [String] username The username
+    # @option params [String] password The password
+    # @result [Hash] params db with users
+    # @option params [String] pwdigest, The incrypted password
+    # @option params [String] id, The user id
+    #
+    # @return [redirect]
+    #   * :'/error' whether an error occured
+    #   * :'/user' redirects to the user that logged in
     def login()
         username = params[:username]
         password = params[:password] 
@@ -85,12 +119,18 @@ module Model
         end
     end
 
+    # Attempts to create a relation table beetween lvls and users
+    #
+    # @return [Nil] just excecutes the commands
     def create_lvl_relationship(user_id)
         db = SQLite3::Database.new('db/parkour_journey_21_db.db')
         db.results_as_hash = true
         db.execute("INSERT INTO users_lvl_relationship (user_id, lvl_id, progress) VALUES (?, 1, 0)",user_id)
     end
 
+    # Attempts to get the lvl of the session user
+    #
+    # @return [String] The name of the lvl
     def get_lvl()
         db = SQLite3::Database.new('db\parkour_journey_21_db.db')
         db.results_as_hash = true
@@ -100,7 +140,9 @@ module Model
         return result[0]["lvlname"]
     end
 
-
+    # Attempts to get the lvl id of the lvl name
+    #
+    # @return [Integer] The id of the lvl
     def get_lvl_id(lvl_name)
         db = SQLite3::Database.new('db\parkour_journey_21_db.db')
         db.results_as_hash = true
@@ -109,6 +151,9 @@ module Model
         return lvl_id
     end
 
+    # Attempts to get the user id with help of the username
+    #
+    # @return [Integer] The id of the user
     def get_user_id(username)
         db = SQLite3::Database.new('db\parkour_journey_21_db.db')
         db.results_as_hash = true
@@ -118,6 +163,9 @@ module Model
         return user_id
     end
 
+    # Attempts add a row in the learning table to indicate that a user is learning a move
+    #
+    # @return [Boolean] True, if it succesfully completes the function
     def learn_move(move_name)
         username = session[:username]
         db = SQLite3::Database.new('db\parkour_journey_21_db.db')
@@ -130,6 +178,9 @@ module Model
         return true
     end
 
+    # Attempts add a row in the learned table to indicate that a user have learned a move
+    #
+    # @return [Boolean] True, if it succesfully completes the function
     def learned_move(move_name)
         username = session[:username]
         db = SQLite3::Database.new('db\parkour_journey_21_db.db')
@@ -143,6 +194,10 @@ module Model
         return true
     end
 
+    # Checks if the user have learned or is learning a specific move
+    #
+    # @return [Boolean] True, if the user is learning or have learnt the move 
+    # @return [Boolean] False, if the user had not learnt or is learning the move
     def check_user_learned_list(user_learned_list,user_learning_list, move_n)
         user_learned_list.each do  |move|
             if move["move_name"] == move_n
@@ -157,6 +212,18 @@ module Model
         return false
     end
 
+    # Attempts to get all the data on the moves in a specific lvl
+    #
+    # @see get_lvl
+    # @see get_lvl_id
+    #
+    # @return [Hash] 
+    #   * :id [Integer] The ID of the move
+    #   * :move_name [String] The name of the move
+    #   * :content [String] The content of the article
+    #   * :difficulty [Integer] The number meaning how hard the move is
+    #   * :created_user_id [Integer] The user id of the user that created the move
+     #  * :img_path [String] The path to the corresponding image
     def get_moves()
         db = SQLite3::Database.new('db\parkour_journey_21_db.db')
         db.results_as_hash = true
@@ -170,6 +237,9 @@ module Model
         return result
     end
 
+    # Attempts to get all the names of the moves with the help of their id and put them in an array
+    #
+    # @return [Array] of all the moves names
     def select_moves_with_id(array_of_moves_id)
         db = SQLite3::Database.new('db\parkour_journey_21_db.db')
         db.results_as_hash = true
@@ -181,6 +251,12 @@ module Model
         return array_of_moves_name
     end
 
+    # Attempts to get all the names of the moves that a user is learning
+    #
+    # @see selection_from_hash_array
+    # @see select_moves_with:id
+    #
+    # @return [Array] An array with names of moves that the user is learning
     def get_learning_moves()
         username = session[:username]
         db = SQLite3::Database.new('db\parkour_journey_21_db.db')
@@ -193,6 +269,12 @@ module Model
         return learning_moves_list
     end
 
+    # Attempts to get all the names of the moves that a user have learnt
+    #
+    # @see selection_from_hash_array
+    # @see select_moves_with:id
+    #
+    # @return [Array] An array with names of moves that the user have learnt
     def get_learned_moves()
         username = session[:username]
         db = SQLite3::Database.new('db\parkour_journey_21_db.db')
@@ -206,6 +288,12 @@ module Model
         return learned_moves_list
     end
 
+    # Attempts to create a new move and thus creates a new row in the move table
+    #
+    # @see selection_from_hash_array
+    # @see select_moves_with:id
+    #
+    # @return [Boolean] True, if the functions works perfectly and changes the database
     def new_move(move_name, move_content, difficulty, genre, img_path)
         created_by = 0
         db = SQLite3::Database.new('db\parkour_journey_21_db.db')
@@ -215,6 +303,11 @@ module Model
         return true
     end 
 
+    # Checks the lvl of the session user and changes it if the user is worthy of leveling up
+    #
+    # @see change_lvl
+    #
+    # @return [Nil] Just executes the commands in the funtion
     def check_lvl(username, user_learned_list)
         user_lvl = get_lvl()
         if user_learned_list.count == 4 && user_lvl == "Noob"
@@ -228,6 +321,12 @@ module Model
         end
     end
 
+    # Attempts to change the lvl of a specific user 
+    #
+    # @see get_lvl_id
+    # @see get_user_id
+    #
+    # @return [command] Updates the relation table beteween users and lvls
     def change_lvl(new_lvl, username)
         db = SQLite3::Database.new('db\parkour_journey_21_db.db')
         lvl_id = get_lvl_id(new_lvl)

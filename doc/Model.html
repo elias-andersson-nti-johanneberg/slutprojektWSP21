@@ -85,7 +85,20 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Funktions program: har alla funktioner samt sköter all kommuniktaion med databasen.</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+
+
+
+</div>
 
 
 
@@ -103,7 +116,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#change_lvl-instance_method" title="#change_lvl (instance method)">#<strong>change_lvl</strong>(new_lvl, username)  &#x21d2; Object </a>
+      <a href="#change_lvl-instance_method" title="#change_lvl (instance method)">#<strong>change_lvl</strong>(new_lvl, username)  &#x21d2; command </a>
     
 
     
@@ -117,7 +130,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Attempts to change the lvl of a specific user.</p>
+</div></span>
   
 </li>
 
@@ -125,7 +140,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#check_lvl-instance_method" title="#check_lvl (instance method)">#<strong>check_lvl</strong>(username, user_learned_list)  &#x21d2; Object </a>
+      <a href="#check_lvl-instance_method" title="#check_lvl (instance method)">#<strong>check_lvl</strong>(username, user_learned_list)  &#x21d2; Nil </a>
     
 
     
@@ -139,7 +154,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Checks the lvl of the session user and changes it if the user is worthy of leveling up.</p>
+</div></span>
   
 </li>
 
@@ -147,7 +164,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#check_user_learned_list-instance_method" title="#check_user_learned_list (instance method)">#<strong>check_user_learned_list</strong>(user_learned_list, user_learning_list, move_n)  &#x21d2; Object </a>
+      <a href="#check_user_learned_list-instance_method" title="#check_user_learned_list (instance method)">#<strong>check_user_learned_list</strong>(user_learned_list, user_learning_list, move_n)  &#x21d2; Boolean </a>
     
 
     
@@ -161,7 +178,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Checks if the user have learned or is learning a specific move.</p>
+</div></span>
   
 </li>
 
@@ -169,7 +188,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#create_lvl_relationship-instance_method" title="#create_lvl_relationship (instance method)">#<strong>create_lvl_relationship</strong>(user_id)  &#x21d2; Object </a>
+      <a href="#create_lvl_relationship-instance_method" title="#create_lvl_relationship (instance method)">#<strong>create_lvl_relationship</strong>(user_id)  &#x21d2; Nil </a>
     
 
     
@@ -183,7 +202,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Attempts to create a relation table beetween lvls and users.</p>
+</div></span>
   
 </li>
 
@@ -191,7 +212,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_learned_moves-instance_method" title="#get_learned_moves (instance method)">#<strong>get_learned_moves</strong>  &#x21d2; Object </a>
+      <a href="#get_learned_moves-instance_method" title="#get_learned_moves (instance method)">#<strong>get_learned_moves</strong>  &#x21d2; Array </a>
     
 
     
@@ -205,7 +226,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Attempts to get all the names of the moves that a user have learnt.</p>
+</div></span>
   
 </li>
 
@@ -213,7 +236,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_learning_moves-instance_method" title="#get_learning_moves (instance method)">#<strong>get_learning_moves</strong>  &#x21d2; Object </a>
+      <a href="#get_learning_moves-instance_method" title="#get_learning_moves (instance method)">#<strong>get_learning_moves</strong>  &#x21d2; Array </a>
     
 
     
@@ -227,7 +250,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Attempts to get all the names of the moves that a user is learning.</p>
+</div></span>
   
 </li>
 
@@ -235,7 +260,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_lvl-instance_method" title="#get_lvl (instance method)">#<strong>get_lvl</strong>  &#x21d2; Object </a>
+      <a href="#get_lvl-instance_method" title="#get_lvl (instance method)">#<strong>get_lvl</strong>  &#x21d2; String </a>
     
 
     
@@ -249,7 +274,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Attempts to get the lvl of the session user.</p>
+</div></span>
   
 </li>
 
@@ -257,7 +284,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_lvl_id-instance_method" title="#get_lvl_id (instance method)">#<strong>get_lvl_id</strong>(lvl_name)  &#x21d2; Object </a>
+      <a href="#get_lvl_id-instance_method" title="#get_lvl_id (instance method)">#<strong>get_lvl_id</strong>(lvl_name)  &#x21d2; Integer </a>
     
 
     
@@ -271,7 +298,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Attempts to get the lvl id of the lvl name.</p>
+</div></span>
   
 </li>
 
@@ -293,7 +322,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><ul><li>
+<p>:img_path [String] The path to the corresponding image.</p>
+</li></ul>
+</div></span>
   
 </li>
 
@@ -301,205 +333,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_user_id-instance_method" title="#get_user_id (instance method)">#<strong>get_user_id</strong>(username)  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#learn_move-instance_method" title="#learn_move (instance method)">#<strong>learn_move</strong>(move_name)  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#learned_move-instance_method" title="#learned_move (instance method)">#<strong>learned_move</strong>(move_name)  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#login-instance_method" title="#login (instance method)">#<strong>login</strong>  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#new_move-instance_method" title="#new_move (instance method)">#<strong>new_move</strong>(move_name, move_content, difficulty, genre, img_path)  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#register_new_user-instance_method" title="#register_new_user (instance method)">#<strong>register_new_user</strong>  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#select_moves_with_id-instance_method" title="#select_moves_with_id (instance method)">#<strong>select_moves_with_id</strong>(array_of_moves_id)  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#selection_from_hash_array-instance_method" title="#selection_from_hash_array (instance method)">#<strong>selection_from_hash_array</strong>(double_array_with_hash, selection)  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#set_error-instance_method" title="#set_error (instance method)">#<strong>set_error</strong>(string)  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#wait-instance_method" title="#wait (instance method)">#<strong>wait</strong>(seconds)  &#x21d2; Object </a>
+      <a href="#get_user_id-instance_method" title="#get_user_id (instance method)">#<strong>get_user_id</strong>(username)  &#x21d2; Integer </a>
     
 
     
@@ -514,7 +348,223 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Funktions program: har alla funktioner samt sköter all kommuniktaion med databasen.</p>
+<p>Attempts to get the user id with help of the username.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#learn_move-instance_method" title="#learn_move (instance method)">#<strong>learn_move</strong>(move_name)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Attempts add a row in the learning table to indicate that a user is learning a move.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#learned_move-instance_method" title="#learned_move (instance method)">#<strong>learned_move</strong>(move_name)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Attempts add a row in the learned table to indicate that a user have learned a move.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#login-instance_method" title="#login (instance method)">#<strong>login</strong>  &#x21d2; redirect </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Attempts to login and update session.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#new_move-instance_method" title="#new_move (instance method)">#<strong>new_move</strong>(move_name, move_content, difficulty, genre, img_path)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Attempts to create a new move and thus creates a new row in the move table.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#register_new_user-instance_method" title="#register_new_user (instance method)">#<strong>register_new_user</strong>  &#x21d2; redirect </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Attempts to create a new user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#select_moves_with_id-instance_method" title="#select_moves_with_id (instance method)">#<strong>select_moves_with_id</strong>(array_of_moves_id)  &#x21d2; Array </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Attempts to get all the names of the moves with the help of their id and put them in an array.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#selection_from_hash_array-instance_method" title="#selection_from_hash_array (instance method)">#<strong>selection_from_hash_array</strong>(double_array_with_hash, selection)  &#x21d2; array </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Attemts to take a double array with hashes with it and take out a single element and put them in an array.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#set_error-instance_method" title="#set_error (instance method)">#<strong>set_error</strong>(string)  &#x21d2; string </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Attemts to change the sessions error message.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#wait-instance_method" title="#wait (instance method)">#<strong>wait</strong>(seconds)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Attemts to make the computer wait before doing the next command.</p>
 </div></span>
   
 </li>
@@ -532,28 +582,68 @@
       <div class="method_details first">
   <h3 class="signature first" id="change_lvl-instance_method">
   
-    #<strong>change_lvl</strong>(new_lvl, username)  &#x21d2; <tt>Object</tt> 
+    #<strong>change_lvl</strong>(new_lvl, username)  &#x21d2; <tt>command</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Attempts to change the lvl of a specific user</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>command</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Updates the relation table beteween users and lvls</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#get_lvl_id-instance_method" title="Model#get_lvl_id (method)">#get_lvl_id</a></span></li>
+    
+      <li><span class='object_link'><a href="#get_user_id-instance_method" title="Model#get_user_id (method)">#get_user_id</a></span></li>
+    
+  </ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-231
-232
-233
-234
-235
-236
-237</pre>
+330
+331
+332
+333
+334
+335
+336</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model/model.rb', line 231</span>
+      <pre class="code"><span class="info file"># File 'model/model.rb', line 330</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_change_lvl'>change_lvl</span><span class='lparen'>(</span><span class='id identifier rubyid_new_lvl'>new_lvl</span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='const'>SQLite3</span><span class='op'>::</span><span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>db\parkour_journey_21_db.db</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -570,33 +660,71 @@
       <div class="method_details ">
   <h3 class="signature " id="check_lvl-instance_method">
   
-    #<strong>check_lvl</strong>(username, user_learned_list)  &#x21d2; <tt>Object</tt> 
+    #<strong>check_lvl</strong>(username, user_learned_list)  &#x21d2; <tt>Nil</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Checks the lvl of the session user and changes it if the user is worthy of leveling up</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Just executes the commands in the funtion</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#change_lvl-instance_method" title="Model#change_lvl (method)">#change_lvl</a></span></li>
+    
+  </ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-218
-219
-220
-221
-222
-223
-224
-225
-226
-227
-228
-229</pre>
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model/model.rb', line 218</span>
+      <pre class="code"><span class="info file"># File 'model/model.rb', line 311</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_check_lvl'>check_lvl</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_user_learned_list'>user_learned_list</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_user_lvl'>user_lvl</span> <span class='op'>=</span> <span class='id identifier rubyid_get_lvl'><span class='object_link'><a href="#get_lvl-instance_method" title="Model#get_lvl (method)">get_lvl</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
@@ -618,34 +746,79 @@
       <div class="method_details ">
   <h3 class="signature " id="check_user_learned_list-instance_method">
   
-    #<strong>check_user_learned_list</strong>(user_learned_list, user_learning_list, move_n)  &#x21d2; <tt>Object</tt> 
+    #<strong>check_user_learned_list</strong>(user_learned_list, user_learning_list, move_n)  &#x21d2; <tt>Boolean</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Checks if the user have learned or is learning a specific move</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>True, if the user is learning or have learnt the move</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>False, if the user had not learnt or is learning the move</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158</pre>
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model/model.rb', line 146</span>
+      <pre class="code"><span class="info file"># File 'model/model.rb', line 201</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_check_user_learned_list'>check_user_learned_list</span><span class='lparen'>(</span><span class='id identifier rubyid_user_learned_list'>user_learned_list</span><span class='comma'>,</span><span class='id identifier rubyid_user_learning_list'>user_learning_list</span><span class='comma'>,</span> <span class='id identifier rubyid_move_n'>move_n</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_user_learned_list'>user_learned_list</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span>  <span class='op'>|</span><span class='id identifier rubyid_move'>move</span><span class='op'>|</span>
@@ -668,26 +841,57 @@
       <div class="method_details ">
   <h3 class="signature " id="create_lvl_relationship-instance_method">
   
-    #<strong>create_lvl_relationship</strong>(user_id)  &#x21d2; <tt>Object</tt> 
+    #<strong>create_lvl_relationship</strong>(user_id)  &#x21d2; <tt>Nil</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Attempts to create a relation table beetween lvls and users</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>just excecutes the commands</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-88
-89
-90
-91
-92</pre>
+125
+126
+127
+128
+129</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model/model.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'model/model.rb', line 125</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_lvl_relationship'>create_lvl_relationship</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='const'>SQLite3</span><span class='op'>::</span><span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>db/parkour_journey_21_db.db</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -702,33 +906,73 @@
       <div class="method_details ">
   <h3 class="signature " id="get_learned_moves-instance_method">
   
-    #<strong>get_learned_moves</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>get_learned_moves</strong>  &#x21d2; <tt>Array</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Attempts to get all the names of the moves that a user have learnt</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>An array with names of moves that the user have learnt</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#selection_from_hash_array-instance_method" title="Model#selection_from_hash_array (method)">#selection_from_hash_array</a></span></li>
+    
+      <li>select_moves_with:id</li>
+    
+  </ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-196
-197
-198
-199
-200
-201
-202
-203
-204
-205
-206
-207</pre>
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model/model.rb', line 196</span>
+      <pre class="code"><span class="info file"># File 'model/model.rb', line 278</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_learned_moves'>get_learned_moves</span><span class='lparen'>(</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_username'>username</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:username</span><span class='rbracket'>]</span>
@@ -750,32 +994,72 @@
       <div class="method_details ">
   <h3 class="signature " id="get_learning_moves-instance_method">
   
-    #<strong>get_learning_moves</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>get_learning_moves</strong>  &#x21d2; <tt>Array</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Attempts to get all the names of the moves that a user is learning</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>An array with names of moves that the user is learning</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#selection_from_hash_array-instance_method" title="Model#selection_from_hash_array (method)">#selection_from_hash_array</a></span></li>
+    
+      <li>select_moves_with:id</li>
+    
+  </ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-184
-185
-186
-187
-188
-189
-190
-191
-192
-193
-194</pre>
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model/model.rb', line 184</span>
+      <pre class="code"><span class="info file"># File 'model/model.rb', line 260</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_learning_moves'>get_learning_moves</span><span class='lparen'>(</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_username'>username</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:username</span><span class='rbracket'>]</span>
@@ -796,29 +1080,60 @@
       <div class="method_details ">
   <h3 class="signature " id="get_lvl-instance_method">
   
-    #<strong>get_lvl</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>get_lvl</strong>  &#x21d2; <tt>String</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Attempts to get the lvl of the session user</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The name of the lvl</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-94
-95
-96
-97
-98
-99
-100
-101</pre>
+134
+135
+136
+137
+138
+139
+140
+141</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model/model.rb', line 94</span>
+      <pre class="code"><span class="info file"># File 'model/model.rb', line 134</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_lvl'>get_lvl</span><span class='lparen'>(</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='const'>SQLite3</span><span class='op'>::</span><span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>db\parkour_journey_21_db.db</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -836,28 +1151,59 @@
       <div class="method_details ">
   <h3 class="signature " id="get_lvl_id-instance_method">
   
-    #<strong>get_lvl_id</strong>(lvl_name)  &#x21d2; <tt>Object</tt> 
+    #<strong>get_lvl_id</strong>(lvl_name)  &#x21d2; <tt>Integer</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Attempts to get the lvl id of the lvl name</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The id of the lvl</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-104
-105
-106
-107
-108
-109
-110</pre>
+146
+147
+148
+149
+150
+151
+152</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model/model.rb', line 104</span>
+      <pre class="code"><span class="info file"># File 'model/model.rb', line 146</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_lvl_id'>get_lvl_id</span><span class='lparen'>(</span><span class='id identifier rubyid_lvl_name'>lvl_name</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='const'>SQLite3</span><span class='op'>::</span><span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>db\parkour_journey_21_db.db</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -880,27 +1226,41 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <ul><li>
+<p>:img_path [String] The path to the corresponding image</p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-160
-161
-162
-163
-164
-165
-166
-167
-168
-169
-170
-171</pre>
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model/model.rb', line 160</span>
+      <pre class="code"><span class="info file"># File 'model/model.rb', line 227</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_moves'>get_moves</span><span class='lparen'>(</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='const'>SQLite3</span><span class='op'>::</span><span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>db\parkour_journey_21_db.db</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -922,29 +1282,60 @@
       <div class="method_details ">
   <h3 class="signature " id="get_user_id-instance_method">
   
-    #<strong>get_user_id</strong>(username)  &#x21d2; <tt>Object</tt> 
+    #<strong>get_user_id</strong>(username)  &#x21d2; <tt>Integer</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Attempts to get the user id with help of the username</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The id of the user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-112
-113
-114
-115
-116
-117
-118
-119</pre>
+157
+158
+159
+160
+161
+162
+163
+164</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model/model.rb', line 112</span>
+      <pre class="code"><span class="info file"># File 'model/model.rb', line 157</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_user_id'>get_user_id</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='const'>SQLite3</span><span class='op'>::</span><span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>db\parkour_journey_21_db.db</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -962,32 +1353,63 @@
       <div class="method_details ">
   <h3 class="signature " id="learn_move-instance_method">
   
-    #<strong>learn_move</strong>(move_name)  &#x21d2; <tt>Object</tt> 
+    #<strong>learn_move</strong>(move_name)  &#x21d2; <tt>Boolean</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Attempts add a row in the learning table to indicate that a user is learning a move</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>True, if it succesfully completes the function</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131</pre>
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model/model.rb', line 121</span>
+      <pre class="code"><span class="info file"># File 'model/model.rb', line 169</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_learn_move'>learn_move</span><span class='lparen'>(</span><span class='id identifier rubyid_move_name'>move_name</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_username'>username</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:username</span><span class='rbracket'>]</span>
@@ -1008,33 +1430,64 @@
       <div class="method_details ">
   <h3 class="signature " id="learned_move-instance_method">
   
-    #<strong>learned_move</strong>(move_name)  &#x21d2; <tt>Object</tt> 
+    #<strong>learned_move</strong>(move_name)  &#x21d2; <tt>Boolean</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Attempts add a row in the learned table to indicate that a user have learned a move</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>True, if it succesfully completes the function</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144</pre>
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model/model.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'model/model.rb', line 184</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_learned_move'>learned_move</span><span class='lparen'>(</span><span class='id identifier rubyid_move_name'>move_name</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_username'>username</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:username</span><span class='rbracket'>]</span>
@@ -1056,45 +1509,101 @@
       <div class="method_details ">
   <h3 class="signature " id="login-instance_method">
   
-    #<strong>login</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>login</strong>  &#x21d2; <tt>redirect</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Attempts to login and update session</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>params</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>form data</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>redirect</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><ul><li>
+<p>:&#39;/error&#39; whether an error occured</p>
+</li><li>
+<p>:&#39;/user&#39; redirects to the user that logged in</p>
+</li></ul>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86</pre>
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model/model.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'model/model.rb', line 97</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_login'>login</span><span class='lparen'>(</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_username'>username</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:username</span><span class='rbracket'>]</span>
@@ -1128,29 +1637,69 @@
       <div class="method_details ">
   <h3 class="signature " id="new_move-instance_method">
   
-    #<strong>new_move</strong>(move_name, move_content, difficulty, genre, img_path)  &#x21d2; <tt>Object</tt> 
+    #<strong>new_move</strong>(move_name, move_content, difficulty, genre, img_path)  &#x21d2; <tt>Boolean</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Attempts to create a new move and thus creates a new row in the move table</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>True, if the functions works perfectly and changes the database</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#selection_from_hash_array-instance_method" title="Model#selection_from_hash_array (method)">#selection_from_hash_array</a></span></li>
+    
+      <li>select_moves_with:id</li>
+    
+  </ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-209
-210
-211
-212
-213
-214
-215
-216</pre>
+297
+298
+299
+300
+301
+302
+303
+304</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model/model.rb', line 209</span>
+      <pre class="code"><span class="info file"># File 'model/model.rb', line 297</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new_move'>new_move</span><span class='lparen'>(</span><span class='id identifier rubyid_move_name'>move_name</span><span class='comma'>,</span> <span class='id identifier rubyid_move_content'>move_content</span><span class='comma'>,</span> <span class='id identifier rubyid_difficulty'>difficulty</span><span class='comma'>,</span> <span class='id identifier rubyid_genre'>genre</span><span class='comma'>,</span> <span class='id identifier rubyid_img_path'>img_path</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_created_by'>created_by</span> <span class='op'>=</span> <span class='int'>0</span>
@@ -1168,40 +1717,81 @@
       <div class="method_details ">
   <h3 class="signature " id="register_new_user-instance_method">
   
-    #<strong>register_new_user</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>register_new_user</strong>  &#x21d2; <tt>redirect</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Attempts to create a new user</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>params</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>form data</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>redirect</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><ul><li>
+<p>:&#39;/error&#39; whether an error occured</p>
+</li><li>
+<p>:&#39;/&#39; the home page if the user was created</p>
+</li></ul>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#create_lvl_relationship-instance_method" title="Model#create_lvl_relationship (method)">#create_lvl_relationship</a></span></li>
+    
+  </ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
 51
 52
 53
@@ -1212,10 +1802,32 @@
 58
 59
 60
-61</pre>
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model/model.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'model/model.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_register_new_user'>register_new_user</span><span class='lparen'>(</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_username'>username</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:username</span><span class='rbracket'>]</span>
@@ -1258,31 +1870,62 @@
       <div class="method_details ">
   <h3 class="signature " id="select_moves_with_id-instance_method">
   
-    #<strong>select_moves_with_id</strong>(array_of_moves_id)  &#x21d2; <tt>Object</tt> 
+    #<strong>select_moves_with_id</strong>(array_of_moves_id)  &#x21d2; <tt>Array</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Attempts to get all the names of the moves with the help of their id and put them in an array</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>of all the moves names</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182</pre>
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model/model.rb', line 173</span>
+      <pre class="code"><span class="info file"># File 'model/model.rb', line 243</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_select_moves_with_id'>select_moves_with_id</span><span class='lparen'>(</span><span class='id identifier rubyid_array_of_moves_id'>array_of_moves_id</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='const'>SQLite3</span><span class='op'>::</span><span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>db\parkour_journey_21_db.db</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -1302,28 +1945,59 @@
       <div class="method_details ">
   <h3 class="signature " id="selection_from_hash_array-instance_method">
   
-    #<strong>selection_from_hash_array</strong>(double_array_with_hash, selection)  &#x21d2; <tt>Object</tt> 
+    #<strong>selection_from_hash_array</strong>(double_array_with_hash, selection)  &#x21d2; <tt>array</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Attemts to take a double array with hashes with it and take out a single element and put them in an array</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>an array with only the selected data</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-21
-22
-23
-24
-25
-26
-27</pre>
+31
+32
+33
+34
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model/model.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'model/model.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_selection_from_hash_array'>selection_from_hash_array</span><span class='lparen'>(</span><span class='id identifier rubyid_double_array_with_hash'>double_array_with_hash</span><span class='comma'>,</span> <span class='id identifier rubyid_selection'>selection</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_new_array'>new_array</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -1340,25 +2014,56 @@
       <div class="method_details ">
   <h3 class="signature " id="set_error-instance_method">
   
-    #<strong>set_error</strong>(string)  &#x21d2; <tt>Object</tt> 
+    #<strong>set_error</strong>(string)  &#x21d2; <tt>string</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Attemts to change the sessions error message</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>string</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the error message</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-16
-17
-18
-19</pre>
+23
+24
+25
+26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model/model.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'model/model.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_error'>set_error</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:error</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_string'>string</span>
@@ -1372,7 +2077,7 @@
       <div class="method_details ">
   <h3 class="signature " id="wait-instance_method">
   
-    #<strong>wait</strong>(seconds)  &#x21d2; <tt>Object</tt> 
+    #<strong>wait</strong>(seconds)  &#x21d2; <tt>Boolean</tt> 
   
 
   
@@ -1381,13 +2086,31 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Funktions program: har alla funktioner samt sköter all kommuniktaion med databasen.</p>
+<p>Attemts to make the computer wait before doing the next command</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>True, if the function worked</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 
 
@@ -1397,13 +2120,13 @@
       <pre class="lines">
 
 
-11
-12
-13
-14</pre>
+15
+16
+17
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model/model.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'model/model.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_wait'>wait</span><span class='lparen'>(</span><span class='id identifier rubyid_seconds'>seconds</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_sleep'>sleep</span><span class='lparen'>(</span><span class='id identifier rubyid_seconds'>seconds</span><span class='rparen'>)</span>
@@ -1419,7 +2142,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sun Apr 25 21:15:10 2021 by
+  Generated on Mon Apr 26 00:12:10 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 (ruby-2.7.2).
 </div>

@@ -7,28 +7,47 @@ require_relative 'C:\Users\elias.andersson9\Documents\GitHub\slutprojektWSP21\mo
 
 enable :sessions
 
-include Model
+include Model # Wat dis?
 
+# Displays the home page and title of the site
+#
 get('/') do
   slim(:home)
 end
 
+# Displays the sign up form
+#
 get('/register') do
   slim(:"user/register")
 end
 
+# Attempts login and updates the session
+#
+# @see Model#login
 post('/register/new') do 
   register_new_user()
 end
 
+# Displays the sign in form
+#
 get('/showlogin') do
   slim(:"user/login")
 end
 
+# Attempts login and updates the session
+#
+# @see Model#login
 post('/login') do
   login()
 end
 
+# Displays the user page where you can find all of your account data. what lvl you are, what kind of moves you have learnt and can learn.
+#
+# @see Model#get_moves
+# @see Model#get_learning_moves
+# @see Model#get_learned_moves
+# @see Model#check_lvl
+# @see Model#get_lvl
 get('/user') do
     moves_list = get_moves()
     learning_list = get_learning_moves()
@@ -54,17 +73,35 @@ get('/user') do
   end
 =end
 
+# Attempts to update what moves you have learned or want to learn and the redirects to '/user'
+#
+# @param [String] training, Information if the user has learnt or wants to learn a specific move
+#
+# @see Model#learn_move
+# @see Model#learned_move
 post('/move/learn') do 
   learn_decision = params[:training]
-    decision = learn_decision.split(".")
-    if decision[0] == "learning"
+  #takes the value from the form splits it up and exceutes two diffrent functions depending on the value sent.
+  decision = learn_decision.split(".")
+  if decision[0] == "learning"
     learn_move(decision[1])
-    else
+  else
     learned_move(decision[1])
-    end
+  end
   redirect('/user')
 end 
 
+# Attempts to create a new move and put it in the database and then redirects to '/created_move'
+#
+# @param [String] move_name, The name of the move that is being created 
+# @param [String] move_content, The description of the new move
+# @param [Integer] difficulty, The number signifing how hard the move is and which lvl is able to learn it. 
+# @param [Integer] genre, The number singifing what class the move belongs to. 
+# @param [String] image, The image of the move
+# @param [String] filename, The name of the image file
+# @param [String] tempfile, The data of the image file
+#
+# @see Model#new_move
 post('/move/new') do 
   move_name = params[:move_name]
   move_content = params[:move_content]
@@ -81,21 +118,24 @@ post('/move/new') do
       f.write(file.read)
     end
   end
-  p img_path
+  
   new_move(move_name, move_content, difficulty, genre, img_path)
 
   redirect('/created_move')
 end
 
-
+# Displays a page where you get feedback that you created a move and the sends you back to '/user'
+#
 get('/created_move') do
   slim(:"moves/created_a_move")
   
   if true == wait(5)
-    redirect('/')
+    redirect('/user')
   end
 end
 
+# Displays a error page with error message to indicate what went wrong
+#
 get('/error') do 
   session[:error]
 end
