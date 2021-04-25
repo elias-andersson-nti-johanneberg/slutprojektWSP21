@@ -1,59 +1,72 @@
 
-h2 Welcome #{session[:username]}!
+div class="user_intro"
+    h2 Welcome #{session[:username]}!
+    h3 lvl:#{user_lvl}
 
-h3 Your lvl is #{user_lvl}
+h2 class="section_title" Learning
+div class="container_s"
+    - user_learning_list.each do |move|
+        - move_n = move ["move_name"]
+        div class="move_selection"
+            h4 = move ["move_name"]
+            p = move ["content"]
+            img src= move["img_path"] alt="" width="100px" / 
+            form class="checkbox" action="move/learn" method="post" enctype="multipart/form-data"
+                input type="checkbox" id="learned" name="training" value="learned.#{move ["move_name"]}"/
+                label for="learned" I can do this
+                input type="submit" value="submit"
 
-h2 learning right now
+h2 class="section_title" My Arsenal
+div class="container_s"
+    - user_learned_list.each do |move|
+        - move_n = move ["move_name"]
+        div class="move_selection"
+            h4 = move ["move_name"]
+            p = move ["content"]
+            img src= move["img_path"] alt="" width="100px" / 
+    
 
-- user_learning_list.each do |move|
-    - move_n = move ["move_name"]
-    h4 = move ["move_name"]
-    p = move ["content"]
-    img src= move["img_path"] alt="" width="100px" / 
-    form action="move/learn" method="post" enctype="multipart/form-data"
-        input type="checkbox" id="learned" name="training" value="learned.#{move ["move_name"]}"/
-        label for="learned" I can do this
-        input type="submit" value="submit"
-
-h2 Moves in my arsenal
-
-- user_learned_list.each do |move|
-    - move_n = move ["move_name"]
-    h4 = move ["move_name"]
-    p = move ["content"]
-    img src= move["img_path"] alt="" width="100px" / 
-    form action="move/learn" method="post" enctype="multipart/form-data"
-        input type="checkbox" id="learned" name="training" value="learned.#{move ["move_name"]}"/
-        label for="learned" I can do this
-        input type="submit" value="submit"
-
-h2 Moves
-
-- user_moves_list.each do |move|
-    - move_n = move ["move_name"]
-    h4 = move ["move_name"]
-    p = move ["content"]
-    img src= move["img_path"] alt="" width="100px" / 
-    form action="move/learn" method="post" enctype="multipart/form-data"
-        input type="checkbox" id="learning" name="training" value="learning.#{move ["move_name"]}"/
-        label for="learning" I want to learn this
-        input type="checkbox" id="learned" name="training" value="learned.#{move ["move_name"]}"/
-        label for="learned" I can do this
-        input type="submit" value="submit"
+h2 class="section_title" Moves
+div class="container_s"
+    - user_moves_list.each do |move|
+        - move_n = move ["move_name"]
+        - if session[:username] == "admin"
+            div class="move_selection"
+                h4 = move ["move_name"]
+                p = move ["content"]
+                img src= move["img_path"] alt="" width="100px" / 
+                form class="checkbox" action="move/learn" method="post" enctype="multipart/form-data"
+                    input type="checkbox" id="learning" name="training" value="learning.#{move ["move_name"]}"/
+                    label for="learning" I want to learn this
+                    input type="checkbox" id="learned" name="training" value="learned.#{move ["move_name"]}"/
+                    label for="learned" I can do this
+                    input type="submit" value="submit"
+        - else
+            - if  true == check_user_learned_list(user_learned_list,user_learning_list, move_n)
+                next
+            -else
+                div class="move_selection"
+                    h4 = move ["move_name"]
+                    p = move ["content"]
+                    img src= move["img_path"] alt="" width="100px" / 
+                    form class="checkbox" action="move/learn" method="post" enctype="multipart/form-data"
+                        input type="checkbox" id="learning" name="training" value="learning.#{move ["move_name"]}"/
+                        label for="learning" I want to learn this
+                        input type="checkbox" id="learned" name="training" value="learned.#{move ["move_name"]}"/
+                        label for="learned" I can do this
+                        input type="submit" value="submit"
      
 
 - if session[:username] == "admin"
-    Section 
-        h3 Create Move 
-        p Here you can create your own move. Fill in everything and create your own move! 
-        form action="move/new" method="post"enctype="multipart/form-data"
-            input type="text" name="move_name" placeholder="Enter Move name"
-            input type="text" name="move_content" placeholder="Enter description"
-            input type="text" name="difficulty" placeholder="Enter difficulty"
-            input type="text" name="genre" placeholder="Enter genre"
-            input type="file" name="image"
-            input type="submit" value="Create new move" 
+    h3 class="section_title" Create Move 
+    section 
+        div class="move_selection"
+            p Here you can create your own move. Fill in everything and create your own move! 
+            form action="move/new" method="post"enctype="multipart/form-data"
+                input type="text" name="move_name" placeholder="Enter Move name"
+                input class="a_lot_of_text" type="text" name="move_content" placeholder="Enter description"
+                input type="text" name="difficulty" placeholder="Enter difficulty"
+                input type="text" name="genre" placeholder="Enter genre"
+                input type="file" name="image"
+                input type="submit" value="Create new move" 
 
-        form action="uploads" method="post"enctype="multipart/form-data"
-            input type="file" name="image"
-            input type="submit" value="Create image" 

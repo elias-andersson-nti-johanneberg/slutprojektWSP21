@@ -4,10 +4,14 @@ html lang="en"
     meta charset="UTF-8"/
     meta name="viewport" content="width=device-width, initial-scale=1.0"/
     link rel="stylesheet" href="/css/style.css"
+    link rel="preconnect" href="https://fonts.gstatic.com"
+    link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Oswald:wght@300;400;500;600&family=Raleway&display=swap" rel="stylesheet"
     title Parkour Journey
   body
-    nav class="navy"
+    nav class="navbar"
       h3 Parkour Journey
-      a href="/register" Register
-      a href="/showlogin" Login
+      div class="links"
+        a href="/" Home
+        a href="/register" Sign up
+        a href="/showlogin" Login
     == yield
