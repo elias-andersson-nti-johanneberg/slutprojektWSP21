@@ -114,6 +114,7 @@ module Model
         pwdigest = result["pwdigest"]
         id = result["id"]
     
+        #FIXA SÅ ATT SESSIONS STÅR I APP
         if BCrypt::Password.new(pwdigest) == password
         session[:id] = id
         session[:username]= username
