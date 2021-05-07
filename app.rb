@@ -49,12 +49,15 @@ end
 # @see Model#check_lvl
 # @see Model#get_lvl
 get('/user') do
-    moves_list = get_moves()
-    learning_list = get_learning_moves()
-    learned_list = get_learned_moves()
-    check_lvl(session[:username], learned_list)
-    lvl = get_lvl()
-    slim(:"user/index", locals:{user_moves_list:moves_list,user_learning_list:learning_list, user_learned_list:learned_list, user_lvl:lvl})
+    username = session[:username]
+    id = session[:id]
+    moves_list = get_moves(username,id)
+    learning_list = get_learning_moves(username)
+    learned_list = get_learned_moves(username)
+    user_list = get_user_list()
+    check_lvl(username, learned_list,id)
+    lvl = get_lvl(id)
+    slim(:"user/index", locals:{username_list:user_list ,user_moves_list:moves_list,user_learning_list:learning_list, user_learned_list:learned_list, user_lvl:lvl})
   end
 
   #!/usr/bin/env ruby
@@ -80,13 +83,14 @@ get('/user') do
 # @see Model#learn_move
 # @see Model#learned_move
 post('/move/learn') do 
+  username = session[:username]
   learn_decision = params[:training]
   #takes the value from the form splits it up and exceutes two diffrent functions depending on the value sent.
   decision = learn_decision.split(".")
   if decision[0] == "learning"
-    learn_move(decision[1])
+    learn_move(decision[1],username)
   else
-    learned_move(decision[1])
+    learned_move(decision[1],username)
   end
   redirect('/user')
 end 
