@@ -72,13 +72,17 @@ div class="container_s"
 
 - if session[:username] == "admin"
     h3 class="section_title" GOD RIGHTS
+    h4
+        a href="/change_username"  change username
     h4 Delete users
     - username_list.each do |username|
         div class="move_selection"
             h4 = username ["username"]
-            form class="checkbox" action="user_delete" method="post"enctype="multipart/form-data"
-                input type="checkbox" id="learned" name="training" value="delete.#{username ["username"]}"/
+            form class="checkbox" action="user_edit" method="post"enctype="multipart/form-data"
+                input type="checkbox" id="delete" name="user_edit" value="delete.#{username ["username"]}"/
                 label for="learned" DELETE
                 input type="submit" value="submit"
+
+ 
 
 

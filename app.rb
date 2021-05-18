@@ -128,6 +128,26 @@ post('/move/new') do
   redirect('/created_move')
 end
 
+post('/user_edit') do
+  username = session[:username]
+  user_decision = params[:user_edit]
+  decision = user_decision.split(".")
+  delete_username(decision[1])
+  redirect('/user') 
+end
+
+get('/change_username') do
+  slim(:"user/change_username")
+end
+
+post('/change_username') do 
+  old_username = params[:old_username]
+  new_username = params[:new_username]
+  change_username(old_username,new_username)
+  redirect('/user')
+end
+
+
 # Displays a page where you get feedback that you created a move and the sends you back to '/user'
 #
 get('/created_move') do

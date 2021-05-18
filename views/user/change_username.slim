@@ -1,0 +1,5 @@
+- if session[:username] == "admin"
+    form action="change_username" method="post"enctype="multipart/form-data"
+        input type="text" name="old_username" placeholder="Enter old username"
+        input type="text" name="new_username" placeholder="Enter new username"
+        input type="submit" value="Change username" 

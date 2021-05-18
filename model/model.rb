@@ -159,7 +159,7 @@ module Model
     # @return [Integer] The id of the user
     def get_user_id(username)
         connect_to_db('db\parkour_journey_21_db.db')
-        result = db.execute("SELECT DISTINCT id FROM users Where username = ?", username) 
+        result = @db.execute("SELECT DISTINCT id FROM users Where username = ?", username) 
         user_id = result[0]["id"]
         p user_id
         return user_id
@@ -320,6 +320,21 @@ module Model
         elsif user_learned_list.count == 25 && user_lvl == "Athlete"
             change_lvl("Legend",username)
         end
+    end
+
+    def delete_username(username)
+        connect_to_db('db\parkour_journey_21_db.db')
+        user_id = get_user_id(username)
+        @db.execute("DELETE from users_lvl_relationship Where user_id = ?", user_id)
+        @db.execute("DELETE from learning Where user_id = ?", user_id)
+        @db.execute("DELETE from learned WHERE user_id = ?", user_id)
+        @db.execute("DELETE from users Where id = ?", user_id)
+    end
+
+    def change_username(old_username,new_username)
+        connect_to_db('db\parkour_journey_21_db.db')
+        user_id = get_user_id(old_username)
+        @db.execute("UPDATE users SET username = ? WHERE id = ?",new_username, user_id)
     end
 
     # Attempts to change the lvl of a specific user 
