@@ -9,13 +9,12 @@ enable :sessions
 
 module Model
 
-# Attemts to make the computer wait before doing the next command
-#
-# @return [Boolean] True, if the function worked
-    def wait(seconds)
-        sleep(seconds)
-        return true
-    end
+    before do
+        if  (request.path_info != '/')  && (request.path_info != '/error') && (request.path_info != '/users/showlogin') && (request.path_info != '/users/login') && (request.path_info != '/users/new') && (!request.path_info.match(/^/cats/\d/)) && (session[:id] == nil)
+          redirect('/error')
+        end
+      end
+      
 
     def connect_to_db(database_name)
         @db = SQLite3::Database.new(database_name.to_s)
@@ -25,7 +24,7 @@ module Model
 # Attemts to change the sessions error message
 #
 # @return [string] the error message
-    def set_error(string, error)
+    def set_error(string)
         session[:error] = string
         return session[:error]
     end
@@ -57,21 +56,28 @@ module Model
         username = params[:username]
         password = params[:password]
         password_confirm = params[:password_confirm]
+        p username 
 
-        if username == nil
+        if username.length > 25
+            set_error("för långt användarnamn")
+            session[:error_register] = true
+            return redirect('/register') 
+        end
+
+        if username == ""
             set_error("Du skrev inget användarnamn")
-            return redirect('/error')
+            session[:error_register] = true
+            return redirect('/register')
         end
 
         connect_to_db('db\parkour_journey_21_db.db')
         @db.results_as_hash = false
         result = @db.execute("SELECT id FROM users WHERE username = ?", username)
 
-
         if result.empty?
             if password == password_confirm
                 password_digest = BCrypt::Password.create(password)
-                @db.execute("INSERT INTO users (username, pwdigest) VALUES (?,?)",username,password_digest)
+                @db.execute("INSERT INTO users (username, pwdigest, rights) VALUES (?,?,?)",username,password_digest, 0)
                 @db.results_as_hash = true
                 user_id = @db.execute("SELECT id FROM users Where username = ?", username)
                 user_id = user_id[0]["id"]
@@ -80,11 +86,13 @@ module Model
             else
                 #felhantering skapa en hash och slim fil error och ha en funktion som tar emot text meddelandet. 
                 set_error("Lösenordet matchade inte")
-                return redirect('/error')
+                session[:error_register] = true
+                return redirect('/register')
             end
         else
             set_error("Det användarnamnet har redan blivit tagen")
-            return redirect('/error')
+            session[:error_register] = true
+            return redirect('/register')
         end
     end
 
@@ -103,25 +111,27 @@ module Model
     def login()
         username = params[:username]
         password = params[:password] 
-    
+        session[:lastlogin] = Time.now
         if username == ""
-        set_error("skrev inget användarnamn")
-        return redirect('/error')
+            set_error("skrev inget användarnamn")
+            session[:error_login] = true
+            return redirect('/login')
         end
     
         connect_to_db('db\parkour_journey_21_db.db')
         result = @db.execute("SELECT * FROM users WHERE username=?", username).first
         pwdigest = result["pwdigest"]
         id = result["id"]
-    
-        #FIXA SÅ ATT SESSIONS STÅR I APP
+        rights = result["rights"]
         if BCrypt::Password.new(pwdigest) == password
-        session[:id] = id
-        session[:username]= username
-        return redirect('/user')
+            session[:id] = id
+            session[:username]= username
+            session[:rights] = rights
+            return redirect('/user')
         else
             set_error("fel lösenord")
-            return redirect('/error')
+            session[:error_login] = true
+            return redirect('/login')
         end
     end
 
@@ -333,6 +343,40 @@ module Model
 
     def change_username(old_username,new_username)
         connect_to_db('db\parkour_journey_21_db.db')
+        user_list = get_user_list()
+        check = false
+        check2 = false
+        
+        if old_username == "" || new_username == ""
+            session[:username_error] = true
+            set_error("Du får inte lämna blankt")
+            return redirect('/user/edit')
+        end
+
+        user_list.each do |user|
+            if old_username == user["username"]
+                check = true
+                break
+            end
+        end
+        if check == false
+            session[:username_error] = true
+            set_error("Det finns inget gammalt användarnamn vid det namnet")
+            return redirect('/user/edit')
+        end
+
+        user_list.each do |user|
+            if new_username == user["username"]
+                check2 = true
+                break
+            end
+        end
+        if check2 == true
+            session[:username_error] = true
+            set_error("Det användarnamnet är redan taget")
+            return redirect('/user/edit')
+        end
+
         user_id = get_user_id(old_username)
         @db.execute("UPDATE users SET username = ? WHERE id = ?",new_username, user_id)
     end

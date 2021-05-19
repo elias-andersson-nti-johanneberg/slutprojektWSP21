@@ -9,6 +9,12 @@ enable :sessions
 
 include Model # Wat dis?
 
+before do
+  if  (request.path_info != '/')  && (request.path_info != '/users')  && (request.path_info != '/error') && (request.path_info != '/users/showlogin') && (request.path_info != '/users/login') && (request.path_info != '/users/new') && (session[:id] == nil)
+    redirect('/error')
+  end
+end
+
 # Displays the home page and title of the site
 #
 get('/') do
@@ -17,8 +23,11 @@ end
 
 # Displays the sign up form
 #
-get('/register') do
-  slim(:"user/register")
+get('user/register') do
+  if session[:error_register] == nil 
+    session[:error_register] == false
+  end
+  slim(:"user/new")
 end
 
 # Attempts login and updates the session
@@ -31,14 +40,24 @@ end
 # Displays the sign in form
 #
 get('/showlogin') do
-  slim(:"user/login")
+  if session[:lastlogin] == nil  #ifall det inte finns ett värde på last login så ska man göra så att det inte är nil
+    session[:error_login] = false
+    session[:lastlogin] = Time.now-15
+  end
+  slim(:"user/showlogin")
 end
 
 # Attempts login and updates the session
 #
 # @see Model#login
 post('/login') do
-  login()
+time_inbetween = Time.now - session[:lastlogin]    #Vad är tidsskillnaden mellan senaste inlogningen och nu
+  if time_inbetween > 10.to_f  #Är den större än 10s
+    login()
+  else  #Om tidsskillnaden mellan senaste inlogningen och nu är mindre än 10 s, gör detta
+    session[:coldownPassword] = true
+    redirect('/login')
+  end
 end
 
 # Displays the user page where you can find all of your account data. what lvl you are, what kind of moves you have learnt and can learn.
@@ -112,6 +131,11 @@ post('/move/new') do
   difficulty = params[:difficulty]
   genre = params[:genre]
 
+  if move_name == "" || move_content == "" || difficulty == "" || genre == "" 
+    set_error("Du måste fylla i allt där det finns text")
+    return redirect('/error')
+  end
+
   if params[:image] && params[:image][:filename]
     filename = params[:image][:filename]
     file = params[:image][:tempfile]
@@ -125,10 +149,10 @@ post('/move/new') do
   
   new_move(move_name, move_content, difficulty, genre, img_path)
 
-  redirect('/created_move')
+  redirect('/user')
 end
 
-post('/user_edit') do
+post('/user/delete') do
   username = session[:username]
   user_decision = params[:user_edit]
   decision = user_decision.split(".")
@@ -136,27 +160,20 @@ post('/user_edit') do
   redirect('/user') 
 end
 
-get('/change_username') do
-  slim(:"user/change_username")
+get('/user/edit') do
+  if session[:username_error]  == nil 
+    session[:username_error] = false
+  end
+  slim(:"user/edit")
 end
 
-post('/change_username') do 
+post('/user/update') do 
   old_username = params[:old_username]
   new_username = params[:new_username]
   change_username(old_username,new_username)
   redirect('/user')
 end
 
-
-# Displays a page where you get feedback that you created a move and the sends you back to '/user'
-#
-get('/created_move') do
-  slim(:"moves/created_a_move")
-  
-  if true == wait(5)
-    redirect('/user')
-  end
-end
 
 # Displays a error page with error message to indicate what went wrong
 #

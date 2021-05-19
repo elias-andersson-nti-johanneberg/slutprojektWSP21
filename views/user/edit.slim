@@ -1,0 +1,8 @@
+- if session[:rights] == 1
+    form action="/user/update" method="post"enctype="multipart/form-data"
+        input type="text" name="old_username" placeholder="Enter old username"
+        input type="text" name="new_username" placeholder="Enter new username"
+        input type="submit" value="Change username" 
+
+- if session[:username_error] == true
+    h2 #{session[:error]}
