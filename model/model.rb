@@ -9,19 +9,16 @@ enable :sessions
 
 module Model
 
-    before do
-        if  (request.path_info != '/')  && (request.path_info != '/error') && (request.path_info != '/users/showlogin') && (request.path_info != '/users/login') && (request.path_info != '/users/new') && (!request.path_info.match(/^/cats/\d/)) && (session[:id] == nil)
-          redirect('/error')
-        end
-      end
-      
-
+# Attemts to connect to a given database and gives the results in hashes
+#
     def connect_to_db(database_name)
         @db = SQLite3::Database.new(database_name.to_s)
         @db.results_as_hash = true
     end
 
 # Attemts to change the sessions error message
+#
+# @see connect_to_db
 #
 # @return [string] the error message
     def set_error(string)
@@ -48,6 +45,7 @@ module Model
     # @option params [String] password_confirm, The repeated password
     #
     # @see Model#create_lvl_relationship
+    # @see connect_to_db
     #
     # @return [redirect]
     #   * :'/error' whether an error occured
@@ -104,6 +102,7 @@ module Model
     # @result [Hash] params db with users
     # @option params [String] pwdigest, The incrypted password
     # @option params [String] id, The user id
+    # @see connect_to_db
     #
     # @return [redirect]
     #   * :'/error' whether an error occured
@@ -137,6 +136,8 @@ module Model
 
     # Attempts to create a relation table beetween lvls and users
     #
+    # @see connect_to_db
+    #
     # @return [Nil] just excecutes the commands
     def create_lvl_relationship(user_id)
         connect_to_db('db\parkour_journey_21_db.db')
@@ -144,6 +145,8 @@ module Model
     end
 
     # Attempts to get the lvl of the session user
+    #
+    # @see connect_to_db
     #
     # @return [String] The name of the lvl
     def get_lvl(id)
@@ -156,6 +159,8 @@ module Model
 
     # Attempts to get the lvl id of the lvl name
     #
+    # @see connect_to_db
+    #
     # @return [Integer] The id of the lvl
     def get_lvl_id(lvl_name)
         connect_to_db('db\parkour_journey_21_db.db')
@@ -166,6 +171,8 @@ module Model
 
     # Attempts to get the user id with help of the username
     #
+    # @see connect_to_db
+    #
     # @return [Integer] The id of the user
     def get_user_id(username)
         connect_to_db('db\parkour_journey_21_db.db')
@@ -175,6 +182,11 @@ module Model
         return user_id
     end
 
+    # Attempts to get the list of all the users in the database
+    #
+    # @see connect_to_db
+    #
+    # @return [array] List of the usernames
     def get_user_list()
         connect_to_db('db\parkour_journey_21_db.db')
         user_list = @db.execute("SELECT username FROM users")
@@ -184,6 +196,8 @@ module Model
 
     # Attempts add a row in the learning table to indicate that a user is learning a move
     #
+    # @see connect_to_db
+    # 
     # @return [Boolean] True, if it succesfully completes the function
     def learn_move(move_name, username)
         connect_to_db('db\parkour_journey_21_db.db')
@@ -196,6 +210,8 @@ module Model
     end
 
     # Attempts add a row in the learned table to indicate that a user have learned a move
+    #
+    # @see connect_to_db
     #
     # @return [Boolean] True, if it succesfully completes the function
     def learned_move(move_name, username)
@@ -210,6 +226,8 @@ module Model
     end
 
     # Checks if the user have learned or is learning a specific move
+    #
+    # @see connect_to_db
     #
     # @return [Boolean] True, if the user is learning or have learnt the move 
     # @return [Boolean] False, if the user had not learnt or is learning the move
@@ -231,6 +249,7 @@ module Model
     #
     # @see get_lvl
     # @see get_lvl_id
+    # @see connect_to_db
     #
     # @return [Hash] 
     #   * :id [Integer] The ID of the move
@@ -253,6 +272,8 @@ module Model
 
     # Attempts to get all the names of the moves with the help of their id and put them in an array
     #
+    # @see connect_to_db
+    # 
     # @return [Array] of all the moves names
     def select_moves_with_id(array_of_moves_id)
         connect_to_db('db\parkour_journey_21_db.db')
@@ -268,6 +289,7 @@ module Model
     #
     # @see selection_from_hash_array
     # @see select_moves_with:id
+    # @see connect_to_db
     #
     # @return [Array] An array with names of moves that the user is learning
     def get_learning_moves(username)
@@ -284,10 +306,10 @@ module Model
     #
     # @see selection_from_hash_array
     # @see select_moves_with:id
+    # @see connect_to_db
     #
     # @return [Array] An array with names of moves that the user have learnt
     def get_learned_moves(username)
-        
         connect_to_db('db\parkour_journey_21_db.db')
         user_id_hash = @db.execute("SELECT id FROM users WHERE username = ?", username) 
         user_id = user_id_hash[0]["id"]
@@ -332,6 +354,12 @@ module Model
         end
     end
 
+    # Attempts to delete a user
+    #
+    # @see connect_to_db
+    # @see get_user_id
+    #
+    # @return [Nil] Just executes the commands in the funtion
     def delete_username(username)
         connect_to_db('db\parkour_journey_21_db.db')
         user_id = get_user_id(username)
@@ -341,6 +369,14 @@ module Model
         @db.execute("DELETE from users Where id = ?", user_id)
     end
 
+    # Attempts to change the username of a user
+    #
+    # @see connect_to_db
+    # @see set_error
+    # @see get_user_list
+    # @see get_user_id
+    #
+    # @return [Nil] Just executes the commands in the funtion
     def change_username(old_username,new_username)
         connect_to_db('db\parkour_journey_21_db.db')
         user_list = get_user_list()

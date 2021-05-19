@@ -9,8 +9,12 @@ enable :sessions
 
 include Model # Wat dis?
 
+#Makes it so that some routes need the user to be logged in
+#
+# @see Model#set_error
 before do
-  if  (request.path_info != '/')  && (request.path_info != '/users')  && (request.path_info != '/error') && (request.path_info != '/users/showlogin') && (request.path_info != '/users/login') && (request.path_info != '/users/new') && (session[:id] == nil)
+  if  (request.path_info != '/')  && (request.path_info != '/register') && (request.path_info != '/login') && (request.path_info != '/error') && (session[:id] == nil)
+    set_error("You have to sign in")
     redirect('/error')
   end
 end
@@ -23,7 +27,7 @@ end
 
 # Displays the sign up form
 #
-get('user/register') do
+get('/register') do
   if session[:error_register] == nil 
     session[:error_register] == false
   end
@@ -39,12 +43,12 @@ end
 
 # Displays the sign in form
 #
-get('/showlogin') do
+get('/login') do
   if session[:lastlogin] == nil  #ifall det inte finns ett värde på last login så ska man göra så att det inte är nil
     session[:error_login] = false
     session[:lastlogin] = Time.now-15
   end
-  slim(:"user/showlogin")
+  slim(:"user/login")
 end
 
 # Attempts login and updates the session
@@ -65,6 +69,7 @@ end
 # @see Model#get_moves
 # @see Model#get_learning_moves
 # @see Model#get_learned_moves
+# @see Model#get_user_list
 # @see Model#check_lvl
 # @see Model#get_lvl
 get('/user') do
@@ -152,6 +157,11 @@ post('/move/new') do
   redirect('/user')
 end
 
+# Attempts to delete an exsisting user and every relatitionship it has in the database
+#
+# @param [array] user_edit,  An array with the decision and the name of the person that is being deleted
+#
+# @see Model#delete_username
 post('/user/delete') do
   username = session[:username]
   user_decision = params[:user_edit]
@@ -160,6 +170,8 @@ post('/user/delete') do
   redirect('/user') 
 end
 
+# Displays a page to change the username of the users
+#
 get('/user/edit') do
   if session[:username_error]  == nil 
     session[:username_error] = false
@@ -167,6 +179,12 @@ get('/user/edit') do
   slim(:"user/edit")
 end
 
+# Attempts to update the username of a ceratin user
+#
+# @param [String] old_username, the old username of the user
+# @param [String] new_username, the new username that the user wants to change to
+#
+# @see Model#change_username
 post('/user/update') do 
   old_username = params[:old_username]
   new_username = params[:new_username]
