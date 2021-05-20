@@ -59,13 +59,13 @@ module Model
         if username.length > 25
             set_error("för långt användarnamn")
             session[:error_register] = true
-            return redirect('/register') 
+            return redirect('/user/new') 
         end
 
         if username == ""
             set_error("Du skrev inget användarnamn")
             session[:error_register] = true
-            return redirect('/register')
+            return redirect('/user/new')
         end
 
         connect_to_db('db\parkour_journey_21_db.db')
@@ -85,12 +85,12 @@ module Model
                 #felhantering skapa en hash och slim fil error och ha en funktion som tar emot text meddelandet. 
                 set_error("Lösenordet matchade inte")
                 session[:error_register] = true
-                return redirect('/register')
+                return redirect('/user/new')
             end
         else
             set_error("Det användarnamnet har redan blivit tagen")
             session[:error_register] = true
-            return redirect('/register')
+            return redirect('/user/new')
         end
     end
 

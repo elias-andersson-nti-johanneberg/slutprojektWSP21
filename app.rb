@@ -13,7 +13,7 @@ include Model # Wat dis?
 #
 # @see Model#set_error
 before do
-  if  (request.path_info != '/')  && (request.path_info != '/register') && (request.path_info != '/login') && (request.path_info != '/error') && (session[:id] == nil)
+  if  (request.path_info != '/')  && (request.path_info != '/user/new') && (request.path_info != '/login') && (request.path_info != '/error') && (session[:id] == nil)
     set_error("You have to sign in")
     redirect('/error')
   end
@@ -22,12 +22,12 @@ end
 # Displays the home page and title of the site
 #
 get('/') do
-  slim(:home)
+  slim(:index)
 end
 
 # Displays the sign up form
 #
-get('/register') do
+get('/user/new') do
   if session[:error_register] == nil 
     session[:error_register] == false
   end
@@ -37,7 +37,7 @@ end
 # Attempts login and updates the session
 #
 # @see Model#login
-post('/register/new') do 
+post('/user/new') do 
   register_new_user()
 end
 
@@ -106,7 +106,7 @@ get('/user') do
 #
 # @see Model#learn_move
 # @see Model#learned_move
-post('/move/learn') do 
+post('/learn/new') do 
   username = session[:username]
   learn_decision = params[:training]
   #takes the value from the form splits it up and exceutes two diffrent functions depending on the value sent.

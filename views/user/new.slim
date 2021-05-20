@@ -1,9 +1,9 @@
 div class="wrapper_form"
     h2 Sign up
-    form action="register/new" method="post"
+    form action="../user/new" method="post"
         input type="text" name="username" placeholder="Enter username"
-        input type="text" name="password" placeholder="Enter password"
-        input type="text" name="password_confirm" placeholder="Enter password again"
+        input type="password" name="password" placeholder="Enter password"
+        input type="password" name="password_confirm" placeholder="Enter password again"
         input type="submit" value="registrera ny användare" 
 
     - if session[:error_register] == true
